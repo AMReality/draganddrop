@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="index.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+
+<body>
+    <article class="page">
+        <article class="main">
+            <h1>Native Drag and Drop<br>Dragging files directly onto the website</h1>
+            <article class="dnd-onto-website cf">
+                <h3>Drag external images into the container below</h3>
+                <h4 class="ie-message">You are using Internet Explorer. IE only supports the 'text' and 'URL' transfer types so your experience may be limited. Also IE9 and below have no support for dragging images from your desktop to the page</h4>
+                <div class="container-drop drop" id="fileList"></div>
+                <div class="message-container"></div>
+                <p>Any draggable elements (images, link tags, selected text) can be dropped here, but <strong>only dragged images from external sites / uploaded images will be displayed</strong></p>
+                <p>Some images are wrapped around an anchor tag, these won't work as the API will consider the drop to be a 'link' and not an 'image'</p>
+            </article>
+            <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+            <a href="#" id="fileSelect">Select some files</a>
+        </article>
+    </article>
+</body>
+
+</html>
