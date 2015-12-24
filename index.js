@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
     //get user agent, test for IE, if show display warning
     var userAgent = window.navigator.userAgent;
     if (userAgent.indexOf('MSIE') != -1) {
-        $('.ie-message').show();
+        $('div.alert-warning').show();
     }
 
     //set up event listeners for the drop item
@@ -213,4 +213,17 @@ function handleFiles(files) {
   }
 }
 
+$('#textSelect').on('click', function(){
+    if ($('#fileList').find('img').length > 0){
+        var text = '<input type="text"/>';
+        $('#fileList').append(text);
+    }
+});
+
+$('#buttonSelect').on('click', function(){
+    if ($('#fileList').find('img').length > 0){
+        var button = '<button>Label</button>';
+        $('#fileList').append(button);
+    }
+});
 
