@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ARCreator</title>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="index.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 
@@ -20,12 +22,12 @@
                     <a href="#" class="close" data-dismiss="alert">&#10006;</a> <strong>Warning!</strong> You are using Internet Explorer. IE only supports the 'text' and 'URL' transfer types so your experience may be limited. Also IE9 and below have no support for dragging images from your desktop to the page</h4>
                 </div>
                 <div class="container-drop drop" id="fileList"></div>
-                <button class="btn btn-success" id="textSelect" onclick="textSelect()">Text</button>
-                <button id="fileSelect" class="btn btn-success">Image</button>
-                <button id="buttonSelect" class="btn btn-success ">Button</button>
+                <button class="btn btn-success" id="textSelect">Text</button>
+                <button id = "fileSelect" class="btn btn-success">Image</button>
+                <button id = "buttonSelect" class="btn btn-success ">Button</button>
                 <!-- <a href= "#" class="btn btn-success">HTML Widget</a>
-                <a href= "#" class="btn btn-success">3D Model</a>
-                <a href= "#" class="btn btn-success">Video</a>-->
+                <a href= "#" class="btn btn-success">3D Model</a>-->
+                <button id= "videoSelect"class="btn btn-success">Video</button>
                 <div class="message-container"></div>
                 <p>Any draggable elements (images, link tags, selected text) can be dropped here, but <strong>only dragged images from external sites / uploaded images will be displayed</strong></p>
                 <p>Some images are wrapped around an anchor tag, these won't work as the API will consider the drop to be a 'link' and not an 'image'</p>

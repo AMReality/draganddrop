@@ -175,55 +175,79 @@ jQuery(document).ready(function($) {
 window.URL = window.URL || window.webkitURL;
 
 var fileSelect = document.getElementById("fileSelect"),
-  fileElem = document.getElementById("fileElem"),
-  fileList = document.getElementById("fileList");
+    fileElem = document.getElementById("fileElem"),
+    fileList = document.getElementById("fileList");
 
 fileSelect.addEventListener("click", function(e) {
-  if (fileElem) {
-    fileElem.click();
-  }
-  e.preventDefault(); // prevent navigation to "#"
+    if (fileElem) {
+        fileElem.click();
+    }
+    e.preventDefault(); // prevent navigation to "#"
 }, false);
 
 function handleFiles(files) {
-  if (!files.length) {
-    fileList.innerHTML = "<p>No files selected!</p>";
-  } else {
-    fileList.innerHTML = "";
-    var list = document.createElement("div");
-    fileList.appendChild(list);
-    for (var i = 0; i < files.length; i++) {
-      var li = document.createElement("span");
-      list.appendChild(li);
+    if (!files.length) {
+        fileList.innerHTML = "<p>No files selected!</p>";
+    } else {
+        fileList.innerHTML = "";
+        var list = document.createElement("div");
+        fileList.appendChild(list);
+        for (var i = 0; i < files.length; i++) {
+            var li = document.createElement("span");
+            list.appendChild(li);
 
-      var img = document.createElement("img");
-      img.src = window.URL.createObjectURL(files[i]);
-      $('img').attr('style', 'min-height: auto');
-      $('img').attr('style', 'max-width: 100%');
-      $('img').attr('style', 'position: relative');
-      $('img').attr('style', 'z-index: 2');
-      img.onload = function() {
-        window.URL.revokeObjectURL(this.src);
-      }
-      li.appendChild(img);
-      var info = document.createElement("span");
-      info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
-      li.appendChild(info);
+            var img = document.createElement("img");
+            img.src = window.URL.createObjectURL(files[i]);
+            $('img').attr('style', 'min-height: auto');
+            $('img').attr('style', 'max-width: 100%');
+            $('img').attr('style', 'position: relative');
+            $('img').attr('style', 'z-index: 2');
+            img.onload = function() {
+                window.URL.revokeObjectURL(this.src);
+            }
+            li.appendChild(img);
+            //var info = document.createElement("span");
+            //info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+            //li.appendChild(info);
+        }
     }
-  }
 }
 
-$('#textSelect').on('click', function(){
-    if ($('#fileList').find('img').length > 0){
-        var text = '<input type="text"/>';
-        $('#fileList').append(text);
+//Adding Text Box if image is present to the Image container
+var i = 0;
+$('#textSelect').click(function() {
+    if ($('#fileList').find('img').length > 0) {
+        $('#fileList').append($("<input />", {
+            type: "text",
+            id: "text_" + i,
+            value: "This is input box",
+        }))
+        $('#text_' + i).resizable({
+            containment: '#fileList'
+        });
+        i++;
     }
 });
 
-$('#buttonSelect').on('click', function(){
-    if ($('#fileList').find('img').length > 0){
-        var button = '<button>Label</button>';
+//Adding Button if image is present to the Image container
+var j = 0;
+$('#buttonSelect').on('click', function() {
+    if ($('#fileList').find('img').length > 0) {
+        $('#fileList').append($("<button/>", {
+            id: "button_" + j,
+            draggable: false,
+            class:"ui-widget-content",
+            text: 'button',
+            cursor: "crosshair"
+        }))
+        j++;
+    }
+});
+
+//Adding Video if image is present to the Image container
+$('#videoSelect').on('click', function() {
+    if ($('#fileList').find('img').length > 0) {
+        var video = '<video></video>';
         $('#fileList').append(button);
     }
 });
-
